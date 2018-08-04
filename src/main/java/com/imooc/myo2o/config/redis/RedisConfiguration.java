@@ -71,7 +71,7 @@ public class RedisConfiguration {
         return jedisKeys;
     }
 
-    //Redis的Strings操作,其他一样。。。
+    //Redis的Strings操作,其他(list set..)一样的方式
     @Bean("jedisStrings")
     public JedisUtil.Strings createJedisUtilStrings(){
         JedisUtil.Strings jedisStrings = jedisUtil.new Strings();

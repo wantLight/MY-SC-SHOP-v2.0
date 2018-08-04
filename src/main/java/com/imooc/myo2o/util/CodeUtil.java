@@ -17,4 +17,6 @@ public class CodeUtil {
 		}
 		return true;
 	}
+
+	//生成二维码大的图片流
 }

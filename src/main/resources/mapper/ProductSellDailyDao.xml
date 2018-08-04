@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.myo2o.dao.ProductSellDaily">
+	<resultMap id="productSellDilyMap" type="com.imooc.myo2o.entity.ProductSellDaily">
+		<result column="create_time" property="createTime" />
+		<result column="total" property="total" />
+		<association property="product" column="product_id"
+			javaType="com.imooc.myo2o.entity.Product">
+			<id column="product_id" property="productId" />
+			<result column="product_name" property="productName" />
+		</association>
+		<association property="shop" column="shop_id"
+			javaType="com.imooc.myo2o.entity.Shop">
+			<id column="shop_id" property="shopId" />
+			<result column="shop_name" property="shopName" />
+		</association>
+	</resultMap>
+	<select id="quaryProductSellDailyList" resultMap="productSellDilyMap">
+		SELECT
+		psd.create_time,
+		psd.total,
+		s.shop_id,
+		s.shop_name,
+		p.product_id,
+		p.product_name
+		FROM
+		tb_product_sell_daily psd,
+		tb_shop s,
+		tb_product p
+		<where>
+			psd.shop_id = s.shop_id
+			AND
+			psd.product_id = p.product_id
+			<if
+				test="productSellDaily.shop != null and productSellDaily.shop.shopId != null">
+				and psd.shop_id = #{productSellDaily.shop.shopId}
+			</if>
+			<if
+				test="productSellDaily.product != null and productSellDaily.product.productName != null">
+				and p.product_name like '%${productSellDaily.product.productName}%'
+			</if>
+			<!-- 大于 小于 号要使用转义字符 -->
+			<if
+				test="beginTime != null and endTime != null">
+				and psd.create_time &gt;= #{beginTime}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertProductSellDaily" parameterType="com.imooc.myo2o.entity.ProductSellDaily">
+		INSERT INTO
+		tb_product_sell_daily
+		(
+		SELECT
+		product_id,shop_id,create_time,COUNT(product_id) AS total FROM
+		tb_user_product_map
+		WHERE date_format(create_time,'%Y-%m-%d') =
+		date_sub(curdate(),INTERVAL  1 DAY )
+		GROUP BY product_id
+		)
+	</insert>
+
+</mapper>

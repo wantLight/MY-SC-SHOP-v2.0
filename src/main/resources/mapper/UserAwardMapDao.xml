@@ -18,47 +18,16 @@
 			javaType="com.imooc.myo2o.entity.PersonInfo">
 			<id column="user_id" property="userId" />
 			<result column="name" property="name" />
-			<result column="birthday" property="birthday" />
-			<result column="gender" property="gender" />
-			<result column="phone" property="phone" />
-			<result column="email" property="email" />
-			<result column="profile_img" property="profileImg" />
-			<result column="customer_flag" property="customerFlag" />
-			<result column="shop_owner_flag" property="shopOwnerFlag" />
-			<result column="admin_flag" property="adminFlag" />
-			<result column="create_time" property="createTime" />
-			<result column="last_edit_time" property="lastEditTime" />
-			<result column="enable_status" property="enableStatus" />
 		</association>
 		<association property="award" column="award_id"
 			javaType="com.imooc.myo2o.entity.Award">
 			<id column="award_id" property="awardId" />
 			<result column="award_name" property="awardName" />
-			<result column="award_desc" property="awardDesc" />
-			<result column="award_img" property="awardImg" />
-			<result column="point" property="point" />
-			<result column="priority" property="priority" />
-			<result column="create_time" property="createTime" />
-			<result column="expire_time" property="expireTime" />
-			<result column="last_edit_time" property="lastEditTime" />
-			<result column="enable_status" property="enableStatus" />
-			<result column="shop_id" property="shopId" />
 		</association>
 		<association property="shop" column="shop_id"
 			javaType="com.imooc.myo2o.entity.Shop">
 			<id column="shop_id" property="shopId" />
 			<result column="shop_name" property="shopName" />
-			<result column="shop_desc" property="shopDesc" />
-			<result column="shop_addr" property="shopAddr" />
-			<result column="phone" property="phone" />
-			<result column="shop_img" property="shopImg" />
-			<result column="longitude" property="longitude" />
-			<result column="latitude" property="latitude" />
-			<result column="priority" property="priority" />
-			<result column="create_time" property="createTime" />
-			<result column="last_edit_time" property="lastEditTime" />
-			<result column="enable_status" property="enableStatus" />
-			<result column="advice" property="advice" />
 		</association>
 	</resultMap>
 	<select id="queryUserAwardMapList" resultMap="userAwardResultMap">

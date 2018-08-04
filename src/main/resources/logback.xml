@@ -16,7 +16,7 @@
 		</encoder>
 	</appender>
 	<!-- DEBUG-->
-	<appender name="dabugAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="debugAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 文件路劲-->
 		<file>${log.filePath}/debug.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -83,7 +83,7 @@
 	</logger>
 
 	<root level="info">
-		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="consoleAppnder" />
 	</root>
 
 </configuration>
