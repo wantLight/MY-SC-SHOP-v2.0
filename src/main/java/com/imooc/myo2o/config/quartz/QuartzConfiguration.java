@@ -9,6 +9,8 @@ import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
+ * 注意： 这里Quartz使用的是最简单的用法
+ *
  * Quartz：给它一个触发条件的定义，它负责到了时间点，触发相应的Job起来干活。
  * jobDetail trigger Scheduler
  * Created by xyzzg on 2018/8/3.
